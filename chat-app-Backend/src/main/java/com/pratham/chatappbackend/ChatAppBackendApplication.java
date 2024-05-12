@@ -1,14 +1,14 @@
-package com.pratham.chatapp;
+package com.pratham.chatappbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ChatAppApplication {
+public class ChatAppBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ChatAppApplication.class, args);
-		System.out.println("Hello vaishali");
+		SpringApplication.run(ChatAppBackendApplication.class, args);
+		System.out.println("Hello");
 	}
 
 }
