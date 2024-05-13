@@ -1,9 +1,8 @@
 package com.pratham.chatappbackend.config;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.Collections;
 
-import java.util.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;
@@ -27,7 +26,7 @@ public class AppConfig {
     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().authorizeHttpRequests(authorize -> authorize.requestMatchers("/api/**").authenticated()
             .anyRequest().permitAll())
-        .addFilterBefore(null, null)
+        // .addFilterBefore(null, null)
         .csrf().disable()
         .cors().configurationSource(new CorsConfigurationSource() {
 
@@ -47,7 +46,7 @@ public class AppConfig {
           }
 
         })
-        .and().formLogin().and().httpBasic(null);
+        .and().formLogin().and().httpBasic();
 
     return http.build();
 
