@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.pratham.chatappbackend.config.TokenProvider;
 import com.pratham.chatappbackend.exception.UserException;
@@ -11,6 +12,7 @@ import com.pratham.chatappbackend.model.User;
 import com.pratham.chatappbackend.repository.UserRepository;
 import com.pratham.chatappbackend.request.UpdateUserRequest;
 
+@Component
 public class UserServiceImpl implements UserService {
 
   @Autowired
