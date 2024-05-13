@@ -44,7 +44,14 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User updateUser(Integer userId, UpdateUserRequest req) throws UserException {
-    throw new UnsupportedOperationException("Unimplemented method 'updateUser'");
+    User user = userRepository.findUserById(userId);
+    if (req.getFull_name() != null) {
+      user.setFull_name(req.getFull_name());
+    }
+    if (req.getProfile_picture() != null) {
+      user.setProfile_picutre(req.getProfile_picture());
+    }
+    return userRepository.save(user);
   }
 
   @Override
