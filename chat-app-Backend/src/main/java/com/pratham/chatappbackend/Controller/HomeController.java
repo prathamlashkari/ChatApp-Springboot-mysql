@@ -1,4 +1,4 @@
-package com.pratham.chatappbackend.Controller;
+package com.pratham.chatappbackend.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
