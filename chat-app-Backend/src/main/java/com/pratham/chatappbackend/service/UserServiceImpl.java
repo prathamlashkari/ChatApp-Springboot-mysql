@@ -56,7 +56,8 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public List<User> search(String query) {
-    throw new UnsupportedOperationException("Unimplemented method 'search'");
+    List<User> users = userRepository.searchUser(query);
+    return users;
   }
 
 }
