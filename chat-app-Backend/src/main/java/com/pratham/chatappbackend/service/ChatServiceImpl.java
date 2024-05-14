@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pratham.chatappbackend.exception.ChatException;
 import com.pratham.chatappbackend.exception.UserException;
@@ -12,6 +13,7 @@ import com.pratham.chatappbackend.model.User;
 import com.pratham.chatappbackend.repository.ChatRepository;
 import com.pratham.chatappbackend.request.GroupChatRequest;
 
+@Service
 public class ChatServiceImpl implements ChatService {
 
   @Autowired
