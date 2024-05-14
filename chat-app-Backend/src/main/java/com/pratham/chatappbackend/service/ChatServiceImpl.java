@@ -131,8 +131,13 @@ public class ChatServiceImpl implements ChatService {
   }
 
   @Override
-  public Chat deleteChat(Integer chatId, User reqUser) throws ChatException, UserException {
-    throw new UnsupportedOperationException("Unimplemented method 'deleteChat'");
+  public void deleteChat(Integer chatId, Integer reqUserId) throws ChatException, UserException {
+
+    Optional<Chat> opt = chatRepository.findById(reqUserId);
+    if (opt.isPresent()) {
+      Chat chat = opt.get();
+      chatRepository.deleteById(chat.getId());
+    }
   }
 
 }
