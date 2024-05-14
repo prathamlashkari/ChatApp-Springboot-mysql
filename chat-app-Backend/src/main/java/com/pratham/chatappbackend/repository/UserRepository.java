@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
   public User findUserById(Integer id);
 
-  @Query("select u from user u where u.full_name Like %:query% or u.email Like %:query%")
+  @Query("select u from User u where u.full_name Like %:query% or u.email Like %:query%")
   public List<User> searchUser(@Param("query") String query);
 
 }

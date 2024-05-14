@@ -4,12 +4,15 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import org.hibernate.annotations.Comment;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
+@Component
 public class TokenProvider {
 
   SecretKey key = Keys.hmacShaKeyFor(JwtConstatns.Secret_Key.getBytes());
