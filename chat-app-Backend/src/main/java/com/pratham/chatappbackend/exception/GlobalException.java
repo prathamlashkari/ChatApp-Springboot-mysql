@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+@SuppressWarnings("unused")
 public class GlobalException {
 
   @ExceptionHandler(UserException.class)

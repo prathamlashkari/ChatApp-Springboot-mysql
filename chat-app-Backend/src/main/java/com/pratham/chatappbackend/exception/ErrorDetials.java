@@ -2,6 +2,7 @@ package com.pratham.chatappbackend.exception;
 
 import java.time.LocalDateTime;
 
+@SuppressWarnings("unused")
 public class ErrorDetials {
 
   private String error;

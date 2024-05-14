@@ -1,5 +1,6 @@
 package com.pratham.chatappbackend.response;
 
+@SuppressWarnings("unused")
 public class ApiResponse {
 
   private String message;
