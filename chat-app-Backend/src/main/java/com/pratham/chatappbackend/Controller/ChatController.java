@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import com.pratham.chatappbackend.exception.UserException;
 import com.pratham.chatappbackend.model.Chat;
 import com.pratham.chatappbackend.model.User;
 import com.pratham.chatappbackend.request.GroupChatRequest;
+import com.pratham.chatappbackend.response.ApiResponse;
 import com.pratham.chatappbackend.service.ChatService;
 import com.pratham.chatappbackend.service.UserService;
 
@@ -76,6 +78,30 @@ public class ChatController {
     User req = userService.findUserProfile(jwt);
     Chat chats = chatService.addUserToGroup(userId, chatId, req);
     return new ResponseEntity<Chat>(chats, HttpStatus.OK);
+
+  }
+
+  @PutMapping("/{chatId}/remove/{userId}")
+  public ResponseEntity<Chat> removeUserFromGroupHandler(@PathVariable Integer chatId, @PathVariable Integer userId,
+      @RequestHeader("Authorization") String jwt)
+      throws UserException, ChatException {
+
+    User reqUser = userService.findUserProfile(jwt);
+    Chat chats = chatService.removeFromGroup(userId, chatId, reqUser);
+    return new ResponseEntity<Chat>(chats, HttpStatus.OK);
+
+  }
+
+  @DeleteMapping("/delete/{chatId}")
+  public ResponseEntity<ApiResponse> deleteChatHandler(@PathVariable Integer chatId,
+      @RequestHeader("Authorization") String jwt)
+      throws UserException, ChatException {
+
+    User reqUser = userService.findUserProfile(jwt);
+    chatService.deleteChat(chatId, reqUser.getId());
+
+    ApiResponse res = new ApiResponse("Chat is deleted successfully", false);
+    return new ResponseEntity<ApiResponse>(res, HttpStatus.OK);
 
   }
 
