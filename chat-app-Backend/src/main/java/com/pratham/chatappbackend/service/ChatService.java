@@ -10,7 +10,7 @@ import com.pratham.chatappbackend.request.GroupChatRequest;
 
 public interface ChatService {
 
-  public Chat crateChat(User reqUser, Integer userId2, boolean isGroup) throws UserException;
+  public Chat crateChat(User reqUser, Integer userId2) throws UserException;
 
   public Chat findChatById(Integer chatId) throws ChatException;
 

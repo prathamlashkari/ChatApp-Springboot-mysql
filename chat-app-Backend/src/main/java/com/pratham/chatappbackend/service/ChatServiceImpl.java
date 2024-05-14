@@ -21,7 +21,7 @@ public class ChatServiceImpl implements ChatService {
   private UserService userService;
 
   @Override
-  public Chat crateChat(User reqUser, Integer userId2, boolean isGroup) throws UserException {
+  public Chat crateChat(User reqUser, Integer userId2) throws UserException {
 
     User user = userService.findUserById(userId2);
     Chat isChatExist = chatRepository.findSingleChatByUserIds(user, reqUser);
