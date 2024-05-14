@@ -20,7 +20,13 @@ public class GlobalException {
   }
 
   @ExceptionHandler(MessageException.class)
-  public ResponseEntity<ErrorDetials> MessageExceptionHandler(UserException e, WebRequest req) {
+  public ResponseEntity<ErrorDetials> MessageExceptionHandler(MessageException e, WebRequest req) {
+    ErrorDetials err = new ErrorDetials(e.getMessage(), req.getDescription(false), LocalDateTime.now());
+    return new ResponseEntity<ErrorDetials>(err, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(ChatException.class)
+  public ResponseEntity<ErrorDetials> ChatExceptionHandler(UserException e, WebRequest req) {
     ErrorDetials err = new ErrorDetials(e.getMessage(), req.getDescription(false), LocalDateTime.now());
     return new ResponseEntity<ErrorDetials>(err, HttpStatus.BAD_REQUEST);
   }
