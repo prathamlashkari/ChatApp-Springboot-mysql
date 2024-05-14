@@ -5,9 +5,12 @@ import java.util.List;
 import com.pratham.chatappbackend.exception.ChatException;
 import com.pratham.chatappbackend.exception.UserException;
 import com.pratham.chatappbackend.model.Chat;
+import com.pratham.chatappbackend.model.User;
 import com.pratham.chatappbackend.request.GroupChatRequest;
 
 public interface ChatService {
+
+  public Chat crateChat(User reqUser, Integer userId2, boolean isGroup) throws UserException;
 
   public Chat findChatById(Integer chatId) throws ChatException;
 

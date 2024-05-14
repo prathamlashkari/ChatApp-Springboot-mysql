@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -24,10 +25,10 @@ public class Chat {
   private String chat_name;
   private String chag_image;
 
-  @Column(name = "is_group")
+  @JoinColumn(name = "is_group")
   private boolean isGroup;
 
-  @Column
+  @JoinColumn(name = "created_by")
   @ManyToOne
   private User createdBy;
 
