@@ -2,8 +2,10 @@ package com.pratham.chatappbackend.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.pratham.chatappbackend.exception.ChatException;
 import com.pratham.chatappbackend.exception.MessageException;
@@ -14,6 +16,7 @@ import com.pratham.chatappbackend.model.User;
 import com.pratham.chatappbackend.repository.MessageRepository;
 import com.pratham.chatappbackend.request.SendMessageRequest;
 
+@Service
 public class MessageServiceImpl implements MessageService {
 
   @Autowired
@@ -56,13 +59,23 @@ public class MessageServiceImpl implements MessageService {
   @Override
   public Message findMessageById(Integer messageId) throws MessageException {
 
-    throw new UnsupportedOperationException("Unimplemented method 'findMessageById'");
+    Optional<Message> opt = messageRepository.findById(messageId);
+
+    if (opt.isPresent()) {
+      return opt.get();
+    }
+    throw new MessageException("message not found ");
   }
 
+  @SuppressWarnings("unlikely-arg-type")
   @Override
-  public void deleteMessage(Integer messageId, User reqUser) throws MessageException {
+  public void deleteMessage(Integer messageId, User reqUser) throws MessageException, UserException {
 
-    throw new UnsupportedOperationException("Unimplemented method 'deleteMessage'");
+    Message message = findMessageById(messageId);
+    if (message.getUser().equals(reqUser.getId())) {
+      messageRepository.deleteById(messageId);
+    }
+    throw new UserException("you cant delete another user message");
   }
 
 }
