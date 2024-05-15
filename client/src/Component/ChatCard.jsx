@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ChatCard = () => {
+
   return (
     <div className="flex items-center justify-center py-2 group coursor-pointer">
       <div className="w-[20%]">
