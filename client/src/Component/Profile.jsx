@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsArrowLeft, BsPencil } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
 
+   const [flag , setFlag] = useState(false);
 
    const navigate = useNavigate();
 
@@ -30,10 +31,21 @@ const Profile = () => {
       {/* name section */}
       <div className="bg-white px-3">
         <p className="py-3">Your Name</p>
-         <div className="w-full flex justify-between items-center">
-          <p className="py-3">username</p>
-          <BsPencil className="cursor-pointer"/>
-         </div>
+        {
+          !flag &&  <div className="w-full flex           justify-between items-center">
+            <p className="py-3">username</p>
+            <BsPencil className="cursor-pointer"/>
+          </div>
+        }
+        {
+          flag && <div>
+            <input 
+            className='w-[80%] outline-none border-b-2 border-blue-700 p-2'
+            placeholder='Enter your name'
+             type="text" />
+          </div>
+        }
+
       </div>
       <div className="px-3 my-5">
           <p className="py-10">This is not your username , This name will be visible to your whatapp contacts</p>
