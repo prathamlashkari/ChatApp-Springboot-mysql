@@ -10,13 +10,24 @@ import { ImAttachment } from 'react-icons/im'
 import "../index.css"
 import Profile from './Profile'
 import { useNavigate } from 'react-router-dom'
+import { Menu, MenuItem } from '@mui/material'
 const Home = () => {
 
   const [query,setQuery] = useState("dd");
   const [content,setContent] = useState("");
-  const navigate = useNavigate();
   const [isProfile,setIsProfile] = useState(false);
   const [currentChat , setCurrentChat] = useState(false);
+  const navigate = useNavigate();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
 
   const handleChat =()=>{
     setCurrentChat(true);
@@ -25,6 +36,7 @@ const Home = () => {
   const hadnleSearch =()=>{}
 
   const handleCreateMessage =()=>{}
+  const handleCreateGroup =()=>{}
 
   const handleNaviagetion=()=>
   {
@@ -51,13 +63,31 @@ const Home = () => {
                   className="rounded-full w-10 h-10 cursor-pointer" 
                   src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                   <p>username</p>
-                  </div>
-                <div className="space-x-3 text-2xl flex"> 
+              </div>
+              <div className="space-x-3 text-2xl flex"> 
                   <TbCircleDashed  
                    className='cursor-pointer'
                    onClick={()=>navigate("/status")}/>
-                  <BiCommentDetail/></div>
-                </div>
+                  <BiCommentDetail/>
+                  <div>
+                      <BsThreeDotsVertical className='cursor-pointer' onClick={handleClick}/>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          'aria-labelledby': 'basic-button',
+                        }}
+                      >
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                        <MenuItem onClick={handleCreateGroup}>Creage Group</MenuItem>
+                        <MenuItem onClick={handleClose}>Logout</MenuItem>
+                      </Menu>
+                  </div>
+
+                  </div>
+              </div>
               <div className="relative flex justify-center items-center bg-white py-4 px-3">
                 <input className="border-none outline-none bg-slate-200 rounded-md w-[93%] pl-9" type="text"
                 placeholder="Search or start new chat"
@@ -79,7 +109,7 @@ const Home = () => {
               className="cursor-pointer mb-2"
               onClick={() =>handleChat()}> 
                <hr /> 
-              <ChatCard />
+              <ChatCard/>
               </div>)}
               </div>
               </div>}
@@ -105,13 +135,17 @@ const Home = () => {
                         <div className="py-3 flex space-x-4 items-center px-3">
                           <AiOutlineSearch/>
                           <BsThreeDotsVertical/>
+
                         </div>
                       </div>
                     </div>
                     {/* message sections */}
                     <div className="px-10 h-[85vh] overflow-y-scroll bg-blue-200">
                         <div className="space-y-1 flex flex-col justify-center  mt-20 py-2">
-                          {[1,2,3,4,5].map((item,ind)=><MessageCard isReqMessage={ind%2==0} content={"messsagess"} />)}
+                          {[1,2,3,4,5].map((item,ind)=><MessageCard 
+                          key={ind}
+                          isReqMessage={ind%2==0} 
+                          content={"messsagess"} />)}
                         </div>
                     </div>
                     {/* Footer part */}
