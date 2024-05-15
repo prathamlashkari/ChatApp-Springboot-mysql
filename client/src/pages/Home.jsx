@@ -11,11 +11,13 @@ import "../index.css"
 import Profile from './Profile'
 import { useNavigate } from 'react-router-dom'
 import { Menu, MenuItem } from '@mui/material'
+import GroupCard from './GroupCard'
 const Home = () => {
 
   const [query,setQuery] = useState("dd");
   const [content,setContent] = useState("");
   const [isProfile,setIsProfile] = useState(false);
+  const [isGroup,setIsGroup] = useState(false);
   const [currentChat , setCurrentChat] = useState(false);
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -28,7 +30,6 @@ const Home = () => {
     setAnchorEl(null);
   };
 
-
   const handleChat =()=>{
     setCurrentChat(true);
   }
@@ -36,7 +37,9 @@ const Home = () => {
   const hadnleSearch =()=>{}
 
   const handleCreateMessage =()=>{}
-  const handleCreateGroup =()=>{}
+  const handleCreateGroup =()=>{
+    setIsGroup(true)
+  }
 
   const handleNaviagetion=()=>
   {
@@ -51,11 +54,12 @@ const Home = () => {
           
             <div className="left w-[30%] bg-[#e8e9ec] h-full">
 
-                   {/* profile */}
+              {/* profile */}
+              {isGroup && <GroupCard/>}
                    {isProfile && <Profile handleCloseProfile={handleNaviagetion}/>}
 
-                              {/* Home */}
-     {!isProfile && <div className="w-full">
+      {/* Home */}
+     {!isProfile && !isGroup && <div className="w-full">
              <div className="flex justify-between items-center p-3">
                    <div onClick={handleNaviagetion} 
                   className="flex items-center space-x-3">
