@@ -1,9 +1,10 @@
- import { BrowserRouter as Router , Routes , Route } from "react-router-dom"
+ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
  // src/index.js
 import './index.css';
 
-import Home from "./Component/Home"
-import Profile from "./Component/Profile";
+import Home from "./pages/Home";
+import Status from "./pages/Status";
+import StateViewer from "./pages/StateViewer";
 function App() {
 
 
@@ -12,7 +13,8 @@ function App() {
        <Router>
          <Routes>
           <Route path="/" element={<Home/>}/>
-          {/* <Route path="/profile" element={<Profile/>}/> */}
+          <Route path="/status" element={<Status/>}/>
+          <Route path="/status/:usreId" element={<StateViewer/>}/>
          </Routes>
        </Router>
     </>

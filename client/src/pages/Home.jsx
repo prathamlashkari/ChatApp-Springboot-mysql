@@ -4,8 +4,8 @@ import { BiCommentDetail } from 'react-icons/bi'
 import { BsEmojiSmile, BsFilter, BsMicFill, BsThreeDotsVertical } from 'react-icons/bs'
 import { TbCircleDashed } from 'react-icons/tb'
 import dashimg from '../assets/dashimg.jpg'
-import ChatCard from './ChatCard'
-import MessageCard from './MessageCard'
+import ChatCard from '../Component/ChatCard'
+import MessageCard from '../Component/MessageCard'
 import { ImAttachment } from 'react-icons/im'
 import "../index.css"
 import Profile from './Profile'
@@ -53,7 +53,9 @@ const Home = () => {
                   <p>username</p>
                   </div>
                 <div className="space-x-3 text-2xl flex"> 
-                  <TbCircleDashed/>
+                  <TbCircleDashed  
+                   className='cursor-pointer'
+                   onClick={()=>navigate("/status")}/>
                   <BiCommentDetail/></div>
                 </div>
               <div className="relative flex justify-center items-center bg-white py-4 px-3">
