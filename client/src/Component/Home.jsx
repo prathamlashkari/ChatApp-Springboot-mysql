@@ -9,10 +9,12 @@ import MessageCard from './MessageCard'
 import { ImAttachment } from 'react-icons/im'
 import "../index.css"
 import Profile from './Profile'
+import { useNavigate } from 'react-router-dom'
 const Home = () => {
 
   const [query,setQuery] = useState("dd");
   const [content,setContent] = useState("");
+  const navigate = useNavigate();
   const [isProfile,setIsProfile] = useState(false);
   const [currentChat , setCurrentChat] = useState(false);
 
@@ -26,6 +28,8 @@ const Home = () => {
 
   const handleNaviagetion=()=>
   {
+    // navigate("/profile")
+    setCurrentChat(false)
     setIsProfile(true)
   }
 
@@ -35,13 +39,14 @@ const Home = () => {
         <div className="flex bg-[#f0f2f5] h-[90vh] absolute top-[5vh] left-[2vw] w-[90vw]">
           
             <div className="left w-[30%] bg-[#e8e9ec] h-full">
-              <div className="w-full">
 
-                {/* profile */}
-                {isProfile && <Profile/>}
-                {/* Home */}
-             {!isProfile&& <div className="flex justify-between items-center p-3">
-                  <div onClick={handleNaviagetion} 
+                   {/* profile */}
+                   {isProfile && <Profile/>}
+
+                              {/* Home */}
+     {!isProfile && <div className="w-full">
+             <div className="flex justify-between items-center p-3">
+                   <div onClick={handleNaviagetion} 
                   className="flex items-center space-x-3">
                   <img 
                   className="rounded-full w-10 h-10 cursor-pointer" 
@@ -49,9 +54,9 @@ const Home = () => {
                   <p>username</p>
                   </div>
                 <div className="space-x-3 text-2xl flex"> 
-                <TbCircleDashed/>
-                <BiCommentDetail/></div>
-              </div>}
+                  <TbCircleDashed/>
+                  <BiCommentDetail/></div>
+                </div>
               <div className="relative flex justify-center items-center bg-white py-4 px-3">
                 <input className="border-none outline-none bg-slate-200 rounded-md w-[93%] pl-9" type="text"
                 placeholder="Search or start new chat"
@@ -76,7 +81,7 @@ const Home = () => {
               <ChatCard />
               </div>)}
               </div>
-              </div>
+              </div>}
             </div>
               {!currentChat && <div className="w-[70%] h-full flex flex-col items-center justify-center">
                  <div className="columns-1 w-full h-full border text-center">
