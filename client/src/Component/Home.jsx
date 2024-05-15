@@ -28,9 +28,8 @@ const Home = () => {
 
   const handleNaviagetion=()=>
   {
-    // navigate("/profile")
     setCurrentChat(false)
-    setIsProfile(true)
+    setIsProfile((prev)=>!prev)
   }
 
   return (
@@ -41,7 +40,7 @@ const Home = () => {
             <div className="left w-[30%] bg-[#e8e9ec] h-full">
 
                    {/* profile */}
-                   {isProfile && <Profile/>}
+                   {isProfile && <Profile handleCloseProfile={handleNaviagetion}/>}
 
                               {/* Home */}
      {!isProfile && <div className="w-full">
