@@ -8,19 +8,26 @@ import ChatCard from './ChatCard'
 import MessageCard from './MessageCard'
 import { ImAttachment } from 'react-icons/im'
 import "../index.css"
+import Profile from './Profile'
 const Home = () => {
 
   const [query,setQuery] = useState("dd");
   const [content,setContent] = useState("");
+  const [isProfile,setIsProfile] = useState(false);
   const [currentChat , setCurrentChat] = useState(false);
 
   const handleChat =()=>{
     setCurrentChat(true);
   }
   
-  const hadnleSearch =()=>{
-  }
+  const hadnleSearch =()=>{}
+
   const handleCreateMessage =()=>{}
+
+  const handleNaviagetion=()=>
+  {
+    setIsProfile(true)
+  }
 
   return (
     <div className="relative">
@@ -29,8 +36,13 @@ const Home = () => {
           
             <div className="left w-[30%] bg-[#e8e9ec] h-full">
               <div className="w-full">
-              <div className="flex justify-between items-center p-3">
-                  <div className="flex items-center space-x-3">
+
+                {/* profile */}
+                {isProfile && <Profile/>}
+                {/* Home */}
+             {!isProfile&& <div className="flex justify-between items-center p-3">
+                  <div onClick={handleNaviagetion} 
+                  className="flex items-center space-x-3">
                   <img 
                   className="rounded-full w-10 h-10 cursor-pointer" 
                   src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
@@ -39,7 +51,7 @@ const Home = () => {
                 <div className="space-x-3 text-2xl flex"> 
                 <TbCircleDashed/>
                 <BiCommentDetail/></div>
-              </div>
+              </div>}
               <div className="relative flex justify-center items-center bg-white py-4 px-3">
                 <input className="border-none outline-none bg-slate-200 rounded-md w-[93%] pl-9" type="text"
                 placeholder="Search or start new chat"

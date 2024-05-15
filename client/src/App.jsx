@@ -3,6 +3,7 @@
 import './index.css';
 
 import Home from "./Component/Home"
+import Profile from "./Component/Profile";
 function App() {
 
 
@@ -11,6 +12,7 @@ function App() {
        <Router>
          <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/profile" element={<Profile/>}/>
          </Routes>
        </Router>
     </>
