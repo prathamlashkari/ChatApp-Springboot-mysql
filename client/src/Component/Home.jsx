@@ -3,13 +3,15 @@ import { AiOutlineSearch } from 'react-icons/ai'
 import { BiCommentDetail } from 'react-icons/bi'
 import { BsFilter } from 'react-icons/bs'
 import { TbCircleDashed } from 'react-icons/tb'
-import ChatCard from './ChatCard'
 import dashimg from '../assets/dashimg.jpg'
+import ChatCard from './ChatCard'
 const Home = () => {
 
-  const [query,setQuery] = useState(null);
-  const hadnleSearch =()=>{
+  const [query,setQuery] = useState("");
+  const [currentChat , setCurrentChat] = useState(false);
 
+  
+  const hadnleSearch =()=>{
   }
   return (
     <div className="relative">
@@ -45,20 +47,23 @@ const Home = () => {
               {/* All users */}
               <div className="bg-white overflow-y-scroll h-[76.8vh] px-4">
               { [1,2,3,4,5].map((i)=> 
-              <div> 
+              <div 
+              key={i}
+              className="cursor-pointer"
+              onClick={() => setCurrentChat((prev) => !prev)}> 
                 <br/> 
-              <ChatCard key={i}/>
+              <ChatCard />
               </div>)}
               </div>
               </div>
             </div>
-                <div className="w-[70%] h-full flex flex-col items-center justify-center">
+              {!currentChat && <div className="w-[70%] h-full flex flex-col items-center justify-center">
                  <div className="columns-1 w-full h-full border text-center">
                    <img className="m-auto mt-[3rem] h-[70%]" src={dashimg} alt="" />
                    <h1 className="text-4xl text-gray-600">Chat-App</h1>
                    <p className="my-9">Send and receive message</p>
                  </div>
-              </div>
+              </div>}
         </div>
       </div>
     </div>
