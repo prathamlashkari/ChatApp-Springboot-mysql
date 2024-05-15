@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsArrowLeft, BsPencil } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 
 const Profile = () => {
@@ -25,6 +25,18 @@ const Profile = () => {
           src="https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </label>
         <input type="file" id="imgInput" className="hidden" />
+      </div>
+
+      {/* name section */}
+      <div className="bg-white px-3">
+        <p className="py-3">Your Name</p>
+         <div className="w-full flex justify-between items-center">
+          <p className="py-3">username</p>
+          <BsPencil className="cursor-pointer"/>
+         </div>
+      </div>
+      <div className="px-3 my-5">
+          <p className="py-10">This is not your username , This name will be visible to your whatapp contacts</p>
       </div>
     </div>
   )
