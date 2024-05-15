@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { BsArrowLeft } from 'react-icons/bs'
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 import SelectMember from '../Component/SelectMember';
 import ChatCard from '../Component/ChatCard';
+import NewGroup from './NewGroup';
 
 const GroupCard = ({handleSearch}) => {
   
@@ -59,8 +60,21 @@ const GroupCard = ({handleSearch}) => {
                 </div>)}
                   
             </div>
+
+            <div className=' flex bottom-10 py-10 bg-slate-200 items-center justify-center'>
+              <div className='bg-green-600 rounded-full p-4'
+               onClick={()=>{
+                setNewGroup(true)
+              }}>
+                <BsArrowRight className='text-white font-bold text-3xl' />
+              </div>
+               
+            </div>
          </div> 
       )}
+      {
+        newGroup && <NewGroup/>
+      }
     </div>
   )
 }
