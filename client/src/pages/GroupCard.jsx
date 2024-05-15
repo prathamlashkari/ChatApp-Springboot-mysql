@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
 import SelectMember from '../Component/SelectMember';
+import ChatCard from '../Component/ChatCard';
 
-const GroupCard = () => {
+const GroupCard = ({handleSearch}) => {
   
   const[newGroup , setNewGroup] = useState();
+  const[query , setQuery] = useState();
   const[groupMember , setGroupMember] = useState(new Set());
 
 
@@ -17,7 +19,6 @@ const GroupCard = () => {
     <div className='w-full h-full'>
       {
         !newGroup && (<div>
-
           <div className='flex items-center space-x-10 bg-[#008069] text-white pt-16 px-10 pb-5'>
             <BsArrowLeft
             className='cursor-pointer text-2xl font-bold'/>
@@ -28,14 +29,36 @@ const GroupCard = () => {
               {
                   groupMember.size > 0 && 
                   Array.from(groupMember).map(
-                    (item)=><SelectMember  
+                    (item)=>(<SelectMember  
                     handleRemoveMember={()=>handleRemoveMember(item)}
-                    member={item} />)
-              }
+                    member={item} />
+                  ))}
+              </div>
+                    <input 
+                    type="text"
+                    onChange={(e)=>{
+                      handleSearch(e.target.value)
+                      setQuery(e.target.value)
+                    }}
+                    className='outline-none border-b border-[#8888] p-2 w-[93%]'
+                    placeholder='search user'
+                    value={query} />
             </div>
-          </div>
-
-
+            <div className='bg-white overflow-y-scroll h-[50.2vh]'>
+              {
+                query && [1,2,3,4,5].map((item)=> <div  
+                  key={item}
+                 onClick={(item)=>{
+                  groupMember.add(item)
+                  setGroupMember(groupMember)
+                  setQuery("");
+                 }}>
+                  <hr/>
+                  <ChatCard/>
+                   
+                </div>)}
+                  
+            </div>
          </div> 
       )}
     </div>

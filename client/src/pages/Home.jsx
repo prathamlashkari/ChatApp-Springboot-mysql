@@ -55,7 +55,7 @@ const Home = () => {
             <div className="left w-[30%] bg-[#e8e9ec] h-full">
 
               {/* profile */}
-              {isGroup && <GroupCard/>}
+              {isGroup && <GroupCard handleSearch={hadnleSearch}/>}
                    {isProfile && <Profile handleCloseProfile={handleNaviagetion}/>}
 
       {/* Home */}
