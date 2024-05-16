@@ -10,7 +10,7 @@ public class HomeController {
 
   @GetMapping("/")
   public ResponseEntity<String> homeContoller() {
-    return new ResponseEntity<String>("welcom to home page", HttpStatus.OK);
+    return new ResponseEntity<String>("welcom to home page spring boot", HttpStatus.OK);
   }
 
 }
