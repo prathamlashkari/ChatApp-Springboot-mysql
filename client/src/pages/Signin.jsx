@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Signin = () => {
 
-  const [inputData , setInputData] = useState();
+  const [inputData , setInputData] = useState({email:"",password:""});
   const handleSubmit =()=>{
     console.log("handle submit")
   }
@@ -16,9 +16,19 @@ const Signin = () => {
           <div>
             <p className='ab-2'>Email</p>
             <input 
-            type="text"
+            type="email"
             placeholder='Enter your Email'
             onChange={handleChange}
+            value={inputData.email}
+            className='py-2 outline outline-green-600 w-full rounded-md border' />
+          </div>
+          <div>
+            <p className='ab-2'>Email</p>
+            <input 
+            type="password"
+            placeholder='Enter your password'
+            onChange={handleChange}
+            value={inputData.password}
             className='py-2 outline outline-green-600 w-full rounded-md border' />
           </div>
         </form>
