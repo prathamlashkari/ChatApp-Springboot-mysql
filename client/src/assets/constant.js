@@ -15,3 +15,4 @@ export const stories =[
     image : "https://static.tnn.in/photo/98128567/98128567.jpg"
   },
 ]
+
