@@ -35,7 +35,7 @@ const Profile = ({ handleBack }) => {
         <label htmlFor="imgInput">
           <img
             className="rounded-full w-[15vw] h-[15vw] cursor-pointer"
-            src={tempPicture || auth.reqUser.profile_picture || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"}
+            src={tempPicture || auth.reqUser.profile_picture || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY8ec019UiyaCBEuzFsipNBRz7QYM0E6QNCmj7eehheg&s"}
             alt=""
           />
         </label>
